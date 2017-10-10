@@ -1,0 +1,105 @@
+group 'com.s2s.test'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile name: 'selenium-java-2.31.0'
+    compile name: 'apache-mime4j-0.6'
+    compile name: 'bsh-1.3.0'
+    compile name: 'cglib-nodep-2.1_3'
+    compile name: 'commons-codec-1.6'
+    compile name: 'commons-collections-3.2.1'
+    compile name: 'commons-configuration-1.6'
+    compile name: 'commons-discovery-0.2'
+    compile name: 'commons-exec-1.1'
+    compile name: 'commons-io-2.4'
+    compile name: 'commons-jxpath-1.3'
+    compile name: 'commons-lang-2.6'
+    compile name: 'commons-lang3-3.1'
+    compile name: 'commons-logging-1.1.1'
+ //    compile name: 'cssparser-0.9.7'
+    compile name: 'cssparser-0.9.8'
+    compile name: 'dom4j-1.1'
+ //   compile name: 'guava-13.0.1'
+    compile name: 'guava-14.0'
+    compile name: 'hamcrest-all-1.1'
+    compile name: 'hamcrest-core-1.3'
+    compile name: 'hamcrest-library-1.3'
+    compile name: 'htmlunit-2.11'
+    compile name: 'htmlunit-core-js-2.11'
+    compile name: 'httpclient-4.2.1'
+    compile name: 'httpcore-4.2.1'
+    compile name: 'httpmime-4.2.1'
+    compile name: 'ini4j-0.5.2'
+    compile name: 'jaxen-1.1.1'
+    compile name: 'jcommander-1.29'
+    compile name: 'jdom-1.0'
+    compile name: 'jetty-websocket-8.1.8'
+    compile name: 'jna-3.4.0'
+    compile name: 'jna-platform-3.4.0'
+    compile name: 'json-20080701'
+ //   compile name: 'json-simple-1.1.1'
+    compile name: 'jsr173_1.0_api'
+    compile name: 'jtds-1.2.6'
+    compile name: 'junit-dep-4.11'
+    compile name: 'KW'
+    compile name: 'log4j-1.2.15'
+    compile name: 'mailapi'
+ //   compile name: 'nekohtml-1.9.16'
+    compile name: 'nekohtml-1.9.17'
+    compile name: 'netty-3.5.7.Final'
+    compile name: 'ojdbc14'
+//    compile name: 'ojdbc6'
+    compile name: 'opencsv-2.3'
+    compile name: 'operadriver-1.2'
+    compile name: 'orai18n'
+    compile name: 'phantomjsdriver-1.0.1'
+    compile name: 'poi-3.8-beta4-20110826'
+    compile name: 'poi-ooxml-3.8-beta4-20110826'
+    compile name: 'poi-ooxml-schemas-3.8-beta4-20110826'
+    compile name: 'postgresql-9.2-1002.jdbc4'
+    compile name: 'protobuf-java-2.4.1'
+    compile name: 'reportng-1.1.3'
+    compile name: 'resolver'
+    compile name: 'sac-1.3'
+    compile name: 'selenium-java-2.31.0-srcs'
+    compile name: 'selenium-java-2.31.0'
+    compile name: 'serializer-2.7.1'
+    compile name: 'sikuli-api-1.0.2-standalone'
+    compile name: 'smtp'
+//    compile name: 'sqljdbc'
+    compile name: 'sqljdbc4'
+//    compile name: 'testng-6.0.1-nobsh-noguice'
+    compile name: 'testng-6.8'
+    compile name: 'velocity-dep-1.4'
+    compile name: 'webbit-0.4.6-full'
+    compile name: 'xalan-2.7.1'
+    compile name: 'xbean'
+    compile name: 'xbean_xpath'
+    compile name: 'xercesImpl-2.10.0'
+    compile name: 'xml-apis-1.4.01'
+    compile name: 'xmlbeans-qname'
+    compile name: 'xmlpublic'
+    compile name: 'xmlunit-1.4'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest{
+        attributes 'Main-Class': 'com.test.selenium.testscript.MITTestDriver',
+        'Class-Path': configurations.runtime.files.collect { "libs/$it.name" }.join(' ')
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+}
